@@ -12,7 +12,8 @@ const IntegrationSchema = new mongoose.Schema({
 const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   passwordHash: String,
-  integrations: [IntegrationSchema]
+  integrations: [IntegrationSchema],
+  contextPrompt: String
 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -33,8 +33,10 @@ async function processarEmailsParaUsuario(user) {
         receivedAt: new Date(e.date)
       });
 
-      // 3. Criar o prompt para IA (pode enriquecer com dados Shopify futuramente)
+      // 3. Criar o prompt para IA, incluindo contexto da loja se existir
+      let contextoLoja = user.contextPrompt || '';
       let prompt = `
+        ${contextoLoja ? 'Informações da loja:\n' + contextoLoja + '\n\n' : ''}
         O cliente enviou o seguinte e-mail:
         "${e.text}"
         Responda de forma educada, personalizada e profissional, como um atendente da loja online.
